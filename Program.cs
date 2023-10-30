@@ -7,6 +7,7 @@
         {
             public string persname, surname, phone, address, birthdate;
         }
+
         public static void Main(string[] args)
         {
             string lastFileName = "address.lis";
@@ -15,13 +16,13 @@
             WriteHelp();
             do
             {
-                Console.Write($"> ");
-                commandLine = Console.ReadLine().Split(' ');
+                commandLine = Input($"> ").Split(' ');
                 if (commandLine[0] == "quit")
                 {
-                    // NYI!
+                    // NYI: safe quit
                     Console.WriteLine("Not yet implemented: safe quit");
                 }
+                // NYI: "list"
                 else if (commandLine[0] == "load")
                 {
                     if (commandLine.Length < 2)
@@ -96,7 +97,7 @@
                     }
                     else
                     {
-                        // NYI!
+                        // NYI: Not yet implemented: save /file/
                         Console.WriteLine("Not yet implemented: save /file/");
                     }
                 }
@@ -104,16 +105,17 @@
                 {
                     if (commandLine.Length < 2)
                     {
-                        Console.Write("personal name: ");
-                        string persname = Console.ReadLine();
-                        Console.Write("surname: ");
-                        string surname = Console.ReadLine();
-                        Console.Write("phone: ");
-                        string phone = Console.ReadLine();
+                        
+                        // Console.Write("personal name: ");
+                        // string persname = Console.ReadLine();
+                        string persname = Input("personal name: ");
+                        string surname = Input("surname: ");
+                        string phone = Input("phone: ");
+                        // NYI: Create person here, and insert in phone list
                     }
                     else
                     {
-                        // NYI!
+                        // NYI: Not yet implemented: new /person/
                         Console.WriteLine("Not yet implemented: new /person/");
                     }
                 }
@@ -127,7 +129,11 @@
                 }
             } while (commandLine[0] != "quit");
         }
-
+        static string Input(string prompt)
+        {
+            Console.Write(prompt);
+            return Console.ReadLine();
+        }
         private static void WriteHelp()
         {
             Console.WriteLine("Avaliable commands: ");
